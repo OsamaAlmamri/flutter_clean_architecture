@@ -1,3 +1,4 @@
+import 'package:clean_architecture/config/routes/app_routes.dart';
 import 'package:clean_architecture/core/utils/app_strings.dart';
 import 'package:clean_architecture/core/utils/app_colors.dart';
 import 'package:clean_architecture/features/random_quote/presentation/screens/quote_screen.dart';
@@ -14,6 +15,7 @@ class QuoteApp extends StatelessWidget {
       title: AppString.appName,
       debugShowCheckedModeBanner: false,
       theme: appTheme(),
+      onGenerateRoute: AppRoutes.onGenerateRoute,
       home: const QuoteScreen(),
     );
   }
