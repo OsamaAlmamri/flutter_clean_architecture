@@ -1,3 +1,4 @@
+import 'package:clean_architecture/core/utils/app_strings.dart';
 import 'package:flutter/material.dart';
 
 class QuoteScreen extends StatelessWidget {
@@ -5,7 +6,10 @@ class QuoteScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return  Scaffold(
+      appBar: AppBar(
+        title: const Text("${AppString.appName}"),
+      ),
       body: const Center(
         child: const Text(
           "data",

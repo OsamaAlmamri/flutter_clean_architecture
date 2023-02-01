@@ -1,3 +1,4 @@
+import 'package:clean_architecture/core/utils/app_strings.dart';
 import 'package:clean_architecture/features/random_quote/presentation/screens/quote_screen.dart';
 import 'package:flutter/material.dart';
 class QuoteApp extends StatelessWidget {
@@ -6,10 +7,12 @@ class QuoteApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: AppString.appName,
+      debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+
       home: const QuoteScreen(),
     );
   }
