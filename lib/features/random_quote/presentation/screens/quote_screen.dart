@@ -1,4 +1,5 @@
 import 'package:clean_architecture/core/utils/app_strings.dart';
+import 'package:clean_architecture/core/utils/assets_manager.dart';
 import 'package:flutter/material.dart';
 
 class QuoteScreen extends StatelessWidget {
@@ -10,11 +11,8 @@ class QuoteScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text("${AppString.appName}"),
       ),
-      body: const Center(
-        child: const Text(
-          "data",
-          style: TextStyle(color: Colors.black),
-        ),
+      body:  Center(
+        child: Image.asset(ImgAssets.quote),
       ),
     );
   }
