@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:clean_architecture/config/locale/app_localizations.dart';
 import 'package:clean_architecture/core/utils/app_colors.dart';
 import 'package:clean_architecture/core/utils/app_strings.dart';
 import 'package:clean_architecture/features/random_quote/presentation/cubit/random_quote_cubit.dart';
+import 'package:clean_architecture/features/splash/presentation/cubit/locale_cubit.dart';
 import '../widgets/quote_screen_content.dart';
 import 'package:clean_architecture/core/widgets/error_widget.dart' as error_widget;
 
@@ -77,10 +79,14 @@ class _QuoteScreenState extends State<QuoteScreen> {
           color: AppColors.primary,
         ),
         onPressed: () {
-
+          if (AppLocalizations.of(context)!.isEnLocale) {
+            BlocProvider.of<LocaleCubit>(context).toArabic();
+          } else {
+            BlocProvider.of<LocaleCubit>(context).toEnglish();
+          }
         },
       ),
-      title: Text("app_name"),
+      title: Text(AppLocalizations.of(context)!.translate('app_name')!),
     );
     return RefreshIndicator(
         child: Scaffold(appBar: appBar, body: _buildBodyContent()),
