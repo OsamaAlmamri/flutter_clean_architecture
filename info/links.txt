@@ -1,0 +1,44 @@
+https://coursee.org/blog/programming/android/clean-architecture-in-android/
+
+https://ahmedmoosa.wordpress.com/2019/11/27/clean-architecture/
+
+**************************************************************************************************
+ Application Core
+    Interfaces
+    Entities
+    DTOs
+Infrastructure
+    Db Context
+    Implementation
+User Interface
+    UI Elements (HTML Views)
+
+**************************************************************************************************
+    لنأخذ مثال لمزيد من التوضيح :- إذا كنا نعمل مع الـ Customers فيكون التقسيم كالتالي:-
+       Application Core
+            Interface
+                 ICustomerService
+            Entities
+                Customer (Entity for Customer Table )
+            DTOs
+              InputCustomer (Model For Transfer data in )
+              Customer (Model For transfer data out )
+       Infrastructure
+             ApplicationDbContext (Contains Customer Entity)
+             CustomerService (Implementation for interface)
+       User Interface
+       Customers Controller
+       Customers Views
+وهكذا الحال مع بقية أجزاء المشروع من Users و Orders وغيرهم .
+كيف تعتمد UI على Application Core فى الكود , وتعتمد فى الـ Runtime على Infrastructure ؟
+* سأوضح لك بمثال :-
+فى المثال السابق CustomerController سيعتمد فى عمله على ICustomerService القادمة من ApplicationCore, ومن خلال Dependency Injection سنحقن هذا الـ Controller فى وقت التشغيل بـ CustomerService القادمة من Infrastructure, على هذا الشكل:-
+CustomerController.cs
+*******
+public CustomersController(ICustomerService custService){
+………….
+}
+Startup.cs
+************
+services.AddTransient<ICustomerService,CustomerService>()
+**************************************************************************************************
